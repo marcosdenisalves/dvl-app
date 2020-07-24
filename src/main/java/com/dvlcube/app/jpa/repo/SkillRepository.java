@@ -1,5 +1,7 @@
 package com.dvlcube.app.jpa.repo;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -15,5 +17,8 @@ import com.dvlcube.app.manager.data.SkillBean;
 public interface SkillRepository extends DvlRepository<SkillBean, Long>, BasicRepository<SkillBean, Long> {
 	
 	@Query("SELECT sb FROM SkillBean sb ORDER BY sb.name ASC")
-	public Iterable<SkillBean> findAllOrderName();
+	Iterable<SkillBean> findAllOrderName();
+	
+	List<SkillBean> findByName(String name);
+	
 }

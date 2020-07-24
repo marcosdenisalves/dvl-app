@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table(uniqueConstraints = { @UniqueConstraint(columnNames = "name") })
 public class FactionBean implements MxBean<Long>, Nameable, Presentable {
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue
 	private Long id;
