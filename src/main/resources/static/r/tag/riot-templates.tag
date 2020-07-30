@@ -89,7 +89,7 @@ this.state = {
     </div>
     <div class="footer-copyright">
         <div class="container">
-            dvl-core.it
+            Marcos Dênis T. A. Lucio Junior
         </div>
     </div>
 </footer>
