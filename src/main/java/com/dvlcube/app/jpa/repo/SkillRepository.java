@@ -1,8 +1,10 @@
 package com.dvlcube.app.jpa.repo;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.dvlcube.app.jpa.BasicRepository;
@@ -15,10 +17,15 @@ import com.dvlcube.app.manager.data.SkillBean;
  */
 @Repository
 public interface SkillRepository extends DvlRepository<SkillBean, Long>, BasicRepository<SkillBean, Long> {
+
+	Optional<SkillBean> findByName(String name);
 	
-	@Query("SELECT sb FROM SkillBean sb ORDER BY sb.name ASC")
+	boolean existsSkillBeanByName(String name);
+	
+	@Query("SELECT obj FROM SkillBean obj ORDER BY obj.name ASC")
 	Iterable<SkillBean> findAllOrderName();
 	
-	List<SkillBean> findByName(String name);
+	@Query("SELECT obj FROM SkillBean obj WHERE obj.name LIKE %:name%")
+	List<SkillBean> findByNameLike(@Param("name") String name);
 	
 }
